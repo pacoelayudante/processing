@@ -24,7 +24,7 @@ class Celula {
       scale(1, -1);
     }
     fill(map(estado, -PI, PI, 0, 255), 255, 255);
-    triangle(0, 0, tam, 0, tam/2, tam*hDeTri);
+    triangle(-.5, -.5, tam+.5, -.5, tam/2, tam*hDeTri+.5);
     popMatrix();
     if (dibujarDireccion) {
       pushStyle();

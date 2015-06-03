@@ -4,10 +4,20 @@ boolean dibujarDirecciones;
 boolean pausa;
 
 PVector botDibujarDirecciones = new PVector(80,270,20);
+PVector botReset = new PVector(100,340,20);
+PVector botFoto = new PVector(120,410,20);
 void mousePressed(){
   if (dist(mouseX,mouseY,botDibujarDirecciones.x,botDibujarDirecciones.y) < botDibujarDirecciones.z) {
     dibujarDirecciones = !dibujarDirecciones;
   }
+  else if (dist(mouseX,mouseY,botReset.x,botReset.y) < botReset.z) {
+    automata = new Automata(0, 0, 45, 24);
+  } 
+  else if (dist(mouseX,mouseY,botFoto.x,botFoto.y) < botFoto.z) {
+    background(255);
+    automata.dibujar(new PVector(mouseX,mouseY),mousePressed,dibujarDirecciones);
+    save();
+  } 
 }
 
 void setup() {
@@ -36,6 +46,23 @@ void draw() {
      ellipse(botDibujarDirecciones.x,botDibujarDirecciones.y,botDibujarDirecciones.z*2-5,botDibujarDirecciones.z*2-5);
   }
   
+  noFill();
+  stroke(0);
+  rectMode(CENTER);
+  ellipse(botReset.x,botReset.y,botReset.z*2,botReset.z*2);
+  rectMode(CORNER);
+  noStroke();
+  fill(0);
+  text("Reiniciar",botReset.x,botReset.y+botReset.z+23);
+  
+  noFill();
+  stroke(0);
+  rectMode(CENTER);
+  ellipse(botFoto.x,botFoto.y,botFoto.z*2,botFoto.z*2);
+  rectMode(CORNER);
+  noStroke();
+  fill(0);
+  text("Exportar Imagen",botFoto.x,botFoto.y+botFoto.z+23);
 }
 
 void iniciarEstadoDeCelula(Celula c) {
