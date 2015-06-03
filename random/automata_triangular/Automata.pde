@@ -1,6 +1,6 @@
 class Automata {
   Celula[] celulas;
- 
+
   Automata(float origenX, float origenY, int niveles, float tam) {
     ArrayList total = new ArrayList();
     Celula[][] grilla = new Celula[niveles][niveles];
@@ -13,7 +13,7 @@ class Automata {
         orientacion = !orientacion;
       }
     }
- 
+
     /*//De 3
      for (int y=0; y<niveles; y++) {
      for (int x=0; x<niveles; x++) {
@@ -28,7 +28,7 @@ class Automata {
      }
      }
      }*/
-     //De 12
+    //De 12
     for (int y=0; y<niveles; y++) {
       for (int x=0; x<niveles; x++) {
         if (grilla[x][y]!=null) {
@@ -61,10 +61,10 @@ class Automata {
         }
       }
     }
- 
+
     celulas = (Celula[])total.toArray(new Celula[0]);
   }
- 
+
   void ciclar() {
     for (int i=0; i<celulas.length; i++) {
       celulas[i].calcularProximoEstado();
@@ -73,24 +73,25 @@ class Automata {
       celulas[i].actualizarEstado();
     }
   }
- 
-  void dibujar() {
+
+  void dibujar(PVector posMouse, boolean estadoMouse, boolean dibujarDireccion) {
     for (int i=0; i<celulas.length; i++) {
       noStroke();
-      celulas[i].dibujar();
+      celulas[i].dibujar(dibujarDireccion);
     }
+    noFill();
+    stroke(255);
     for (int i=0; i<celulas.length; i++) {
-      if (celulas[i].encima()) {
+      if (celulas[i].encima(posMouse)) {
         for (int j=0; j<celulas[i].vecinas.length; j++) {
-          stroke(255, 255, 255);
-          celulas[i].vecinas[j].dibujar();
-          if (mousePressed) celulas[i].vecinas[j].estado = radians(frameCount);
+          celulas[i].vecinas[j].dibujarSoloTriangulo();
+          if (estadoMouse) celulas[i].vecinas[j].estado = radians(frameCount);
         }
-        stroke(180, 255, 255);
-        celulas[i].dibujar();
-          if (mousePressed) celulas[i].estado = radians(frameCount);
+        celulas[i].dibujarSoloTriangulo();
+        if (estadoMouse) celulas[i].estado = celulas[i].estado = radians(frameCount);
         break;
       }
     }
   }
 }
+

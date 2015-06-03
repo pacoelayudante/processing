@@ -3,9 +3,9 @@ class Celula {
   Celula[] vecinas;
   float x, y;
   float tam;
-  float estado,estadoFuturo;
+  float estado, estadoFuturo;
   boolean orientacion;
- 
+
   Celula(float x, float y, float tam, boolean orientacion) {
     this.x = x;
     this.y = y;
@@ -14,8 +14,8 @@ class Celula {
     vecinas = new Celula[0];
     iniciarEstadoDeCelula(this);
   }
- 
-  void dibujar() {
+
+  void dibujar(boolean dibujarDireccion) {
     pushMatrix();
     translate(x, y);
     pushMatrix();
@@ -23,26 +23,40 @@ class Celula {
       translate(0, tam*hDeTri);
       scale(1, -1);
     }
-    fill(map(estado,-PI,PI,0,255),255,255);
+    fill(map(estado, -PI, PI, 0, 255), 255, 255);
     triangle(0, 0, tam, 0, tam/2, tam*hDeTri);
     popMatrix();
-    translate(tam/2,tam/2);
-    rotate(estado);
-    stroke(0);
-    fill(0);
-    ellipse(0,0,3,3);
-    line(0,0,tam/3,0);
+    if (dibujarDireccion) {
+      pushStyle();
+      translate(tam/2, tam/2);
+      rotate(estado);
+      stroke(0);
+      fill(0);
+      ellipse(0, 0, 3, 3);
+      line(0, 0, tam/3, 0);
+      popStyle();
+    }
     popMatrix();
   }
-   
+  void dibujarSoloTriangulo() {
+    pushMatrix();
+    translate(x, y);
+    if (orientacion) {
+      translate(0, tam*hDeTri);
+      scale(1, -1);
+    }
+    triangle(0, 0, tam, 0, tam/2, tam*hDeTri);
+    popMatrix();
+  }
+
   void calcularProximoEstado() {
     calcularDeEstadoDeCelula(this);
   }
-   
+
   void actualizarEstado() {
     estado = estadoFuturo;
   }
- 
+
   void vincular(Celula otra) {
     if (otra != null) {
       boolean noEsta = true;
@@ -57,8 +71,9 @@ class Celula {
       if (noEsta) otra.vecinas = (Celula[]) append(otra.vecinas, this);
     }
   }
- 
-  boolean encima() {
-    return dist(mouseX, mouseY, x, y)<tam/3;
+
+  boolean encima(PVector punto) {
+    return (punto.x-x)*(punto.x-x)+(punto.y-y)*(punto.y-y) < (tam/2)*(tam/2);//dist(punto.x, punto.y, x, y)<tam/3;
   }
 }
+
