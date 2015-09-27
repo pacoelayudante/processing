@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<title>impro_16_9_15_javascript : Built with Processing and Processing.js</title>
+		<link rel="stylesheet" type="text/css" href="http://itch.io/static/game.css?1432461564">
+		<link rel="stylesheet" type="text/css" href="http://itch.io/static/icons/style.css?1432461564">
+		<link rel="icon"  type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAQAAVzABAEAjBQAaDwYAWjUGAGE6CQBrQQ0ATS8PAFhAJwBUQC8AbFI6AHVXPACBZk4A4NrWAPb19QAAAAAAAMmZmZmZmgAJIwAAAAAAcMIjPjA+PjAKpxIuMDMzMAm0Ii4zMzMACaIiLt3dMAAJtyIuIzPQAAm0Un5yM+IzKLRkfncy4iIotRF+dyLkIiq0QX53F+EiGrQUTkd34iIatEVu7u5iIVrBVVRBRFRVbAtGZGZla2uwAMu7u7u8vADAAwAAgAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIABAADAAwAA" />
+		<meta name="Generator" content="Processing" />
+		<!-- - - - - - - - - - - - - - - - - - - - - 
+		+
+		+    Wondering how this works? 
+		+
+		+    Go to: http://processing.org/
+		+    and: http://processingjs.org/
+		+
+		+ - - - - - - - - - - - - - - - - - - - - -->
+		<style type="text/css">
+	body {
+	  background-color: white;
+	  margin: 0px;
+	}
+	.descrip {
+	  background-color: black;
+	  margin: 0px;
+	  color: white;
+	  width: 512px;
+	}
+	canvas { 
+		display: block; 
+		outline: 0px; 
+	}
+		</style>
+		<!--[if lt IE 9]>
+			<script type="text/javascript">alert("Your browser does not support the canvas tag.");</script>
+		<![endif]-->
+		<script src="processing.js" type="text/javascript"></script>
+		<script type="text/javascript">
+// convenience function to get the id attribute of generated sketch html element
+function getProcessingSketchId () { return 'impro16915javascript'; }
+</script>
+
+	</head>
+	<body>
+		<div style="margin:30px;">
+		<div class="descrip">
+		<input type="checkbox" checked disabled/>Change between Erode and Dilate filter holding or releasing any mouse button.<br/>
+		<input type="checkbox" checked disabled/>Generate swimmer with mouse left button.<br/>
+		<input type="checkbox" onchange="Processing.getInstanceById(getProcessingSketchId()).setInvertir(this.checked)"/> Invert filter control.<br/>
+		<input type="checkbox" checked="true" onchange="Processing.getInstanceById(getProcessingSketchId()).setEfecto(this.checked)"/> Dilate/Erode filter active.<br/>
+		</div>
+				<canvas id="impro16915javascript" data-processing-sources="impro_16_9_15_javascript.pde" 
+						width="512" height="512">
+					<p>Your browser does not support the canvas tag.</p>
+					<!-- Note: you can put any alternative content here. -->
+				</canvas>
+				<noscript>
+					<p>JavaScript is required to view the contents of this page.</p>
+				</noscript></div>
+	</body>
+</html>
